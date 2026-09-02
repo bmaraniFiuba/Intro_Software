@@ -6,11 +6,10 @@ while true;
 do
     for archivo in entrada/*.txt #recorro cada archivo .txt dentro de entrada/
     do
-        # echo "Encontŕe el archivo: $archivo" creo que no va,
         if [ -f "$archivo" ]; then
         #1
             cat "$archivo" >> "salida/$FILENAME.txt"
-        #cat imprime el contenido del archivo y lo manda al final de salida $Filename.txt
+        #cat imprime el contenido del archivo y con ">>" lo manda al final de salida $Filename.txt
         
         #2
             fecha=$(date +"%d/%m/%Y %H:%M:%S")
