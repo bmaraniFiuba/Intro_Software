@@ -29,7 +29,7 @@ opcion=0
 if [ -z "${FILENAME:-}" ]; then # Comprobamos la existencia de FILENAME
     echo "Error: la variable de ambiente FILENAME no está definida."
     echo "Debe ejecutarse por consola el comando: export FILENAME=(nombre a elección)"
-    exit 1 #ver si va
+    exit 1
 elif [ "${1:-}" == "-d" ]; then
     # $1 es el primer argumento pasado al script
     borrar_entorno
@@ -62,15 +62,6 @@ else
                 fi
                 ;;
             2)
-                # if [ -z "$FILENAME" ]; then
-                #     echo "Error: la variable FILENAME no se definió. Por favor, defínala antes de correr el proceso."
-                # else
-                # nohup ~/EPNro1/consolidar.sh & #nohup bash "$HOME/EPNro1/consolidar.sh" > /dev/null 2>&1 &
-                #     #lanza el script en background
-                # echo $! > ~/EPNro1/consolidar.pid
-                #     #guarda el PID del proceso en un archivo
-                #     #PID= identificador de proceso.
-                # echo "Proceso consolidar.sh iniciado en background (PID $!)"
                 "$HOME/EPNro1/consolidar.sh" &
                 #lanza el script en background
                 echo $! > "$HOME/EPNro1/consolidar.pid"
@@ -105,7 +96,7 @@ else
                 else
                     read -p "Ingrese padron: " padron
                     
-                    resPadron=$(grep "^$padron " ~/EPNro1/salida/$FILENAME.txt) #ver bien como se usa
+                    resPadron=$(grep "^$padron " ~/EPNro1/salida/$FILENAME.txt)
                     
                     if [ -z "$resPadron" ]; then
                         echo "Error: el $padron no se encuentra en el archivo $FILENAME.txt"
